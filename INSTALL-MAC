@@ -250,6 +250,17 @@ SRMIO (git)
 
 oauth (0.8.8)
 
+If you have macports installed, you can install the oauth dependencies 
+with the following commands: 
+
+$ sudo port install oauth
+
+Amend the following in gcconfig.pri:
+LIBOAUTH_INSTALL = /opt/local
+LIBOAUTH_LIBS    = -loauth
+
+Alternatively...
+
 ./configure CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk -arch x86_64 CURL_CFLAGS="-I/Developer/SDKs/MacOSX10.7.sdk/usr/include/curl"  CURL_LIBS="-lcurl" --disable-dependency-tracking
 
 2.3 QwtPlot3d - For 3d plot support
