@@ -257,7 +257,17 @@ oauth (0.8.8)
 
 qwtplot3d (maintain_0_2_x)
 
-Add the following to qwtplot3d.pro:
+If you have macports installed, you can install the qwplot3d dependencies 
+with the following commands: 
+
+$ sudo port install qwplot3d
+
+Amend the following in gcconfig.pri:
+QWT3D_INSTALL = /opt/local
+QWT3D_INCLUDE = /opt/local/include/qwtplot3d
+QWT3D_LIBS    = -lqwtplot3d
+
+Alternatively, add the following to qwtplot3d.pro:
 CONFIG += x86_64 static
 QMAKE_MAC_SDK=/Developer/SDKs/MacOSX10.7.sdk
 
