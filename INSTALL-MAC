@@ -278,7 +278,17 @@ note: the added CXXFLAGS helped clear the -Werror flag that stopped compilation.
 
 libusb (0.1.12)
 
-To compile on OSX you need to apply the patch here:
+If you have macports installed, you can install the libusb dependencies 
+with the following commands: 
+
+$ sudo port install libusb-legacy
+
+Amend the following in gcconfig.pri:
+LIBUSB_INSTALL = /opt/local
+LIBUSB_INCLUDE = /opt/local/include/libusb-legacy
+LIBUSB_LIBS    = -L/opt/local/lib/libusb-legacy -lusb-legacy
+
+Alternatively, to compile on OSX you need to apply the patch here:
 https://trac.macports.org/browser/trunk/dports/devel/libusb-legacy/files?rev=97840
 
 Then:
