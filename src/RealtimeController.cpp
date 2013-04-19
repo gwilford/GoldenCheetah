@@ -269,6 +269,14 @@ RealtimeController::processRealtimeData(RealtimeData &rtData)
         }
         break;
 
+    case 25 : //  Elite SuperChrono Power Fluid 
+    case 26 : //  Elite Qubo Fluid
+        {
+        double V = rtData.getSpeed();
+        rtData.setWatts(pow(0.15*V, 2) + (2.27*V) - 0.25);
+        }
+        break;
+
     default : // unknown - do nothing
         break;
     }

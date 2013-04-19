@@ -1111,6 +1111,8 @@ AddFinal::AddFinal(AddDeviceWizard *parent) : QWizardPage(parent), wizard(parent
     virtualPower->addItem(tr("Power - Tacx Flow (4)"));
     virtualPower->addItem(tr("Power - Tacx Flow (6)"));
     virtualPower->addItem(tr("Power - Tacx Flow (8)"));
+    virtualPower->addItem(tr("Power - Elite SuperChrono Power Fluid"));
+    virtualPower->addItem(tr("Power - Elite Qubo Fluid"));
 
     wheelSize->addItem(tr("Road/Cross (700C/622)")); // 2100mm
     wheelSize->addItem(tr("Tri/TT (650C)")); // 1960mm
