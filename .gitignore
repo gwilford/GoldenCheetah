@@ -6,3 +6,9 @@ Makefile
 # osx noise
 .DS_Store
 profile
+
+# vi temps
+.swp
+
+# ant debug file
+antlog.bin
