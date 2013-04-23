@@ -39,3 +39,4 @@ GoldenCheetah.app
 
 #ignore ctags for vim
 tags
+.swp
