@@ -19,6 +19,7 @@
 #include "SearchBox.h"
 #include "MainWindow.h"
 #include "NamedSearch.h"
+#include "RideNavigator.h"
 #include "GcSideBarItem.h"
 #include <QToolButton>
 #include <QInputDialog>
@@ -28,7 +29,7 @@
 #include <QDebug>
 
 SearchBox::SearchBox(MainWindow *main, QWidget *parent)
-    : QLineEdit(parent), main(main)
+    : QLineEdit(parent), main(main), filtered(false)
 {
     setFixedHeight(21);
     //clear button
@@ -163,6 +164,7 @@ void SearchBox::searchSubmit()
 {
     // return hit / key pressed
     if (text() != "") {
+        filtered = true;
         mode == Search ? submitQuery(text()) : submitFilter(text());
     }
 }
@@ -170,6 +172,7 @@ void SearchBox::searchSubmit()
 void SearchBox::clearClicked()
 {
     setText("");
+    filtered = false;
     //mode == Search ? clearQuery() : clearFilter();
     setGood();
 }
@@ -185,18 +188,24 @@ void SearchBox::setMenu()
     dropMenu->clear();
     if (text() != "") dropMenu->addAction(tr("Add Favourite"));
     if (main->namedSearches->getList().count()) {
+        dropMenu->addAction(tr("Edit Favourites"));
         dropMenu->addSeparator();
         foreach(NamedSearch x, main->namedSearches->getList()) {
             dropMenu->addAction(x.name);
         }
+        dropMenu->addSeparator();
     }
+    dropMenu->addAction(tr("Column Chooser"));
 }
 
 void SearchBox::runMenu(QAction *x)
 {
     // just qdebug for now
     if (x->text() == tr("Add Favourite")) addNamed();
-    else {
+    else if (x->text() == tr("Column Chooser")) {
+        ColumnChooser *selector = new ColumnChooser(main->listView->logicalHeadings);
+        selector->show();
+    } else {
         NamedSearch get = main->namedSearches->get(x->text());
         if (get.name == x->text()) {
             setMode(static_cast<SearchBox::SearchBoxMode>(get.type));

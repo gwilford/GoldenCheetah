@@ -1037,7 +1037,7 @@ ColumnChooser::ColumnChooser(QList<QString>&logicalHeadings)
     buttons->setContentsMargins(0,0,0,0);
 
     QFont small;
-    small.setPointSize(10);
+    small.setPointSize(8);
 
     QList<QString> buttonNames = logicalHeadings;
     qSort(buttonNames);
@@ -1059,7 +1059,7 @@ ColumnChooser::ColumnChooser(QList<QString>&logicalHeadings)
 
         // update layout
         x++;
-        if (x > 3) {
+        if (x > 5) {
             y++;
             x = 0;
         }
