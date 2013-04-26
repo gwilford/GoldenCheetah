@@ -273,7 +273,7 @@ RealtimeController::processRealtimeData(RealtimeData &rtData)
     case 26 : //  Elite Qubo Fluid
         {
         double kmh = rtData.getSpeed();
-        rtData.setWatts(pow(-0.0002*kmh, 4) + pow(0.01862.27*kmh, 3) - pow(0.1719*kmh, 2) + 4.3014*kmh - 0.5614);
+        rtData.setWatts(pow(-0.0002*kmh, 4) + pow(0.0186*kmh, 3) - pow(0.1719*kmh, 2) + 4.3014*kmh - 0.5614);
         }
         break;
 
